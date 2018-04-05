@@ -1,0 +1,26 @@
+{
+  "name": "game-collection-project",
+  "version": "1.0.0",
+  "description": "Game Collection for weekend project 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iancarthey/game-collection-project.git"
+  },
+  "author": "Ian Carthey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iancarthey/game-collection-project/issues"
+  },
+  "homepage": "https://github.com/iancarthey/game-collection-project#readme",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-route": "^1.6.9",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}
