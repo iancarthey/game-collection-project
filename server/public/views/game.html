@@ -1,19 +1,30 @@
 <section>
     <h3>Add Game</h3>
     <!-- GAME INPUTS GO HERE -->
-
+    <form ng-submit="vm.addGame(vm.gameToAdd)">
+            <input type="text" placeholder="Name" ng-model="vm.gameToAdd.name">
+            <input type="text" placeholder="Release Year" ng-model="vm.gameToAdd.release">
+            <select ng-model="vm.gameToAdd.gametype_id">
+                <!-- not selected / blank option -->
+                <option value="">---Please select---</option>
+                <!-- repeat over ships -->
+                <option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</option>
+            </select>
+        <input type="submit">
+    </form>
+    <hr>
     <h3>Games</h3>
     <table>
         <thead>
             <tr>
-                <th>Name</th> <th>Release Date</th> <th>Game Type</th>
+                <th>Name</th> <th>Release Year</th> <th>Game Type</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="item in vm.gameLib.list">
                 <td>{{item.name}}</td>
                 <td>{{item.release}}</td>
-                <td>{{item.type}}</td>
+                <td>{{item.type_name}}</td>
             </tr>
         </tbody>
     </table>

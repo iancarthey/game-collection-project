@@ -8,7 +8,7 @@ gameApp.config(function($routeProvider){
     .when('/game', {
         templateUrl: '/views/game.html',
         controller: 'GameController as vm'
-    }).when('/genre', {
+    }).when('/gametype', {
         templateUrl: '/views/gametype.html',
         controller: 'TypeController as vm'
     }).otherwise(

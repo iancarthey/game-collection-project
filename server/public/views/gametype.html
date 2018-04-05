@@ -1,3 +1,23 @@
 <section>
-    <h3>Game Type View</h3>
+    <h3>Manage Games</h3>
+    <!-- INPUT FIELD TO ADD TYPE -->
+    <form ng-submit="vm.addType(vm.newGameType)">
+        <input type="text" placeholder="Add Game Type" ng-model="vm.newGameType.name">
+        <input type="submit">
+    </form>
+    <h3>Game Types</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Type</td> <td>Number of Games</td> <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="gt in vm.typeArray.list">
+                <td>{{gt.type_name}}</td>
+                <td>{{gt.count}}</td>
+                <td><button>DELETE</button></td>
+            </tr>
+        </tbody>
+    </table>
 </section>

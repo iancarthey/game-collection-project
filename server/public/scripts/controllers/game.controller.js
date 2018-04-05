@@ -9,4 +9,11 @@ gameApp.controller('GameController', ['GameService', function(GameService) {
     //link for game Array
     self.gameLib = twitch.gameLib;
 
+    //link for type array
+    self.typeArray = twitch.typeArray;
+
+    //link for POST req
+    self.addGame = twitch.addGame;
+    self.gameToAdd = twitch.gameToAdd;
+
 }]);
