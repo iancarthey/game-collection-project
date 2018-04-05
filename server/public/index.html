@@ -7,11 +7,15 @@
     <title>Game Collection</title>
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <script src="scripts/client.js"></script>
 </head>
-<body>
+<body ng-app="GameApp">
 <h1>Game Collection</h1>
-    <div ng-app="GameApp">
-        
+    <div class="container">
+        <div ng-include=" '/views/templates/nav.html' "></div>
+        <main ng-view>
+            <!-- html views go here -->
+        </main>
     </div>    
 </body>
 </html>
