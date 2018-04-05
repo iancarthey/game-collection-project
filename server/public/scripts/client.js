@@ -10,8 +10,8 @@ gameApp.config(function($routeProvider){
         templateUrl: '/views/game.html',
         controller: 'GameController as vm'
     }).when('/genre', {
-        templateUrl: '/views/genre.html',
-        controller: 'GenreController as vm'
+        templateUrl: '/views/gametype.html',
+        controller: 'TypeController as vm'
     }).otherwise(
         {redirectTo: '/game'}
     )
