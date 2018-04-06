@@ -17,7 +17,7 @@
             <tr ng-repeat="gt in vm.typeArray.list">
                 <td>{{gt.type_name}} games</td>
                 <td>{{gt.count}}</td>
-                <td><button>DELETE</button></td>
+                <td><button ng-click="vm.removeGameType(gt)">DELETE</button></td>
             </tr>
         </tbody>
     </table>

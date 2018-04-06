@@ -16,4 +16,9 @@ gameApp.controller('GameController', ['GameService', function(GameService) {
     self.addGame = twitch.addGame;
     self.gameToAdd = twitch.gameToAdd;
 
+    self.removeGame = function(game) {
+        console.log(game.id);
+        twitch.removeGame(game.id);
+    };
+
 }]);
