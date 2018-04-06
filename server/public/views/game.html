@@ -2,30 +2,42 @@
     <h3>Add Game</h3>
     <!-- GAME INPUTS GO HERE -->
     <form ng-submit="vm.addGame(vm.gameToAdd)">
-            <input type="text" placeholder="Name" ng-model="vm.gameToAdd.name">
-            <input type="text" placeholder="Release Year" ng-model="vm.gameToAdd.release">
-            <select ng-model="vm.gameToAdd.gametype_id">
+            <md-input-container>
+                <label >Name</label>
+                <input ng-model="vm.gameToAdd.name">
+            </md-input-container>
+            <md-input-container>
+                <label>Release Year</label>
+                <input ng-model="vm.gameToAdd.release">
+            </md-input-container>
+            <md-input-container>
+                <label>Game Type</label>
+                <md-select ng-model="vm.gameToAdd.gametype_id">
+                    <!-- not selected / blank option -->
+                    <md-option value="">Please select Type</md-option>
+                    <!-- repeat over ships -->
+                    <md-option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Rating</label>
+                <md-Select ng-model="vm.gameToAdd.rating">
                 <!-- not selected / blank option -->
-                <option value="">Please select Type</option>
-                <!-- repeat over ships -->
-                <option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</option>
-            </select>
-            <Select ng-model="vm.gameToAdd.rating">
-                <!-- not selected / blank option -->
-                <option value="">Please select Rating</option>
+                    <md-option value="">Please select Rating</option>
                 <!-- NUMBER VALUES -->
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </Select>
+                    <md-option value="0">0</md-option>
+                    <md-option value="1">1</md-option>
+                    <md-option value="2">2</md-option>
+                    <md-option value="3">3</md-option>
+                    <md-option value="4">4</md-option>
+                    <md-option value="5">5</md-option>
+                    <md-option value="6">6</md-option>
+                    <md-option value="7">7</md-option>
+                    <md-option value="8">8</md-option>
+                    <md-option value="9">9</md-option>
+                    <md-option value="10">10</md-option>
+                </md-Select>
+            </md-input-container>
         <input type="submit">
     </form>
     <hr>

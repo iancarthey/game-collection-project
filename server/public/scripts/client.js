@@ -1,4 +1,4 @@
-let gameApp = angular.module('GameApp', ['ngRoute']);
+let gameApp = angular.module('GameApp', ['ngRoute', 'ngMaterial']);
 
 //set up routes
 gameApp.config(function($routeProvider){
