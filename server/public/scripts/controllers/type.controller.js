@@ -9,4 +9,9 @@ gameApp.controller('TypeController', ['GameService', function(GameService) {
     //LINK FOR TYPE ARRAY
     self.typeArray = gameService.typeArray;
 
+    // LINK FOR ADD TYPE
+    self.addType = gameService.addType;
+    self.newGameType = gameService.newGameType;
+
+
 }]);

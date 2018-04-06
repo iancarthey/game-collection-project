@@ -30,7 +30,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //POST REQUEST FOR ADDING GAME
     self.addGame = function(gameToAdd){
-        $http.post('/library', gameToAdd).then(function(response){
+        $http.post('/library/game', gameToAdd).then(function(response){
             console.log('succesfully added game');
             self.getGame();
             self.getType();
@@ -41,7 +41,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //POST REQUEST FOR ADDING TYPE
     self.addType = function(newGameType){
-        $http.post('/library', newGameType).then(function(response){
+        $http.post('/library/gametype', newGameType).then(function(response){
             console.log('successfully added gametype');
             self.getType();
         }).catch(function(error){
@@ -49,7 +49,6 @@ gameApp.service('GameService', ['$http', function($http){
         })
 };
 
-    
+    self.getType();    
     self.getGame();
-    self.getType();
 }]);
