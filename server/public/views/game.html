@@ -6,11 +6,26 @@
             <input type="text" placeholder="Release Year" ng-model="vm.gameToAdd.release">
             <select ng-model="vm.gameToAdd.gametype_id">
                 <!-- not selected / blank option -->
-                <option value="">---Please select---</option>
+                <option value="">Please select Type</option>
                 <!-- repeat over ships -->
                 <option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</option>
             </select>
-            <input type="number" placeholder="Rating" ng-model="vm.gameToAdd.rating">
+            <Select ng-model="vm.gameToAdd.rating">
+                <!-- not selected / blank option -->
+                <option value="">Please select Rating</option>
+                <!-- NUMBER VALUES -->
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </Select>
         <input type="submit">
     </form>
     <hr>
@@ -18,7 +33,7 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Rating</th> <th>Action</th>
+                <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Rating</th> <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +42,7 @@
                 <td>{{game.release}}</td>
                 <td>{{game.type_name}}</td>
                 <td>{{game.rating}}</td>
-                <td>
-                    <button ng-click="vm.changeGameScore(game, 1)">Up Vote</button>
+                <td><button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</button>
                     <button ng-click="vm.changeGameScore(game, -1)">Down Vote</button>
                     <button ng-click="vm.removeGame(game)">Remove</button>
                 </td>
