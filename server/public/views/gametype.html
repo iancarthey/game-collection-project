@@ -2,7 +2,10 @@
     <h3>Manage Games</h3>
     <!-- INPUT FIELD TO ADD TYPE -->
     <form ng-submit="vm.addType(vm.newGameType)">
-        <input type="text" placeholder="Add Game Type" ng-model="vm.newGameType.type_name">
+        <md-input-container>
+            <label>New Game Type</label>
+            <input ng-model="vm.newGameType.type_name">
+        </md-input-container> 
         <input type="submit">
     </form>
     <hr>

@@ -1,45 +1,47 @@
 <section>
     <h3>Add Game</h3>
     <!-- GAME INPUTS GO HERE -->
-    <form ng-submit="vm.addGame(vm.gameToAdd)">
-            <md-input-container>
-                <label >Name</label>
+    <div class="gameInputClass">
+        <md-input-container>
+                <label>Name</label>
                 <input ng-model="vm.gameToAdd.name">
-            </md-input-container>
-            <md-input-container>
+        </md-input-container>
+        <md-input-container>
                 <label>Release Year</label>
                 <input ng-model="vm.gameToAdd.release">
-            </md-input-container>
-            <md-input-container>
-                <label>Game Type</label>
-                <md-select ng-model="vm.gameToAdd.gametype_id">
-                    <!-- not selected / blank option -->
-                    <md-option value="">Please select Type</md-option>
-                    <!-- repeat over ships -->
-                    <md-option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</md-option>
-                </md-select>
-            </md-input-container>
-            <md-input-container>
-                <label>Rating</label>
-                <md-Select ng-model="vm.gameToAdd.rating">
-                <!-- not selected / blank option -->
-                    <md-option value="">Please select Rating</option>
-                <!-- NUMBER VALUES -->
-                    <md-option value="0">0</md-option>
-                    <md-option value="1">1</md-option>
-                    <md-option value="2">2</md-option>
-                    <md-option value="3">3</md-option>
-                    <md-option value="4">4</md-option>
-                    <md-option value="5">5</md-option>
-                    <md-option value="6">6</md-option>
-                    <md-option value="7">7</md-option>
-                    <md-option value="8">8</md-option>
-                    <md-option value="9">9</md-option>
-                    <md-option value="10">10</md-option>
-                </md-Select>
-            </md-input-container>
-        <input type="submit">
-    </form>
+        </md-input-container>
+        <br>
+        <md-input-container>
+            <label>Game Type</label>
+            <md-select ng-model="vm.gameToAdd.gametype_id">
+                <!-- repeat over ships -->
+                <md-option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <!-- <md-input-container> -->
+            <!-- <label>Rating</label>
+            <md-Select ng-model="vm.gameToAdd.rating">
+                <md-option value="0">0</md-option>
+                <md-option value="1">1</md-option>
+                <md-option value="2">2</md-option>
+                <md-option value="3">3</md-option>
+                <md-option value="4">4</md-option>
+                <md-option value="5">5</md-option>
+                <md-option value="6">6</md-option>
+                <md-option value="7">7</md-option>
+                <md-option value="8">8</md-option>
+                <md-option value="9">9</md-option>
+                <md-option value="10">10</md-option>
+            </md-Select>
+        </md-input-container> -->
+        <h3>Rating: {{vm.gameToAdd.rating}}/10 </h3>
+        <div class="sliderClass">
+                <div flex="10" layout layout-align="left left"></div>
+            <md-slider flex class="md-primary md-discrete" ng-model="vm.gameToAdd.rating" step="1" min="0" max="10" aria-label="rating">
+            </md-slider>
+        </div>
+        <md-button ng-click="vm.addGame(vm.gameToAdd)" type="submit">Submit</md-button>
+    </div>
     <hr>
     <h3>Games</h3>
     <table>

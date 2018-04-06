@@ -15,3 +15,8 @@ gameApp.config(function($routeProvider){
         {redirectTo: '/game'}
     )
 });
+
+gameApp.config(function ($mdThemingProvider){
+    $mdThemingProvider.theme('default')
+    .dark();
+})
