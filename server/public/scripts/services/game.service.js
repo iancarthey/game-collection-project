@@ -8,9 +8,7 @@ gameApp.service('GameService', ['$http', function($http){
     self.typeArray = { list: [] };
 
     self.getGame = function(){
-        console.log('IN getGame');
         $http.get('/library/game').then(function(response){
-            console.log('SUCCESSFULLY GOT GAMES: ', response.data);
             self.gameLib.list = response.data;
         }).catch(function(error){
             console.log('ERROR IN GETTING GAMES');
@@ -19,9 +17,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //GET REQUEST FOR TYPE
     self.getType = function(){
-        console.log('IN getType');
         $http.get('/library/gametype').then(function(response){
-            console.log('SUCCESSFULLY GOT TYPES: ', response.data);
             self.typeArray.list = response.data;
         }).catch(function(error){
             console.log('ERROR IN GETTING TYPES');
@@ -70,6 +66,16 @@ gameApp.service('GameService', ['$http', function($http){
             self.getType();
         }).catch(function(error){
             console.log('ERROR DELETING CLIENT GAME: ', error);
+        });
+    };
+
+    // PUT REQUEST FOR UPDATING RATING
+    self.changeGameScore = function(game, ratingChange){
+        let rating = {ratingChange: ratingChange};
+        $http.put(`/library/game/${game.id}`, rating).then(function(response){
+            self.getGame()
+        }).catch(function(error){
+            console.log('ERROR IN CLIENT PUT REQ: ', error);
         });
     };
 

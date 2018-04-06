@@ -16,9 +16,12 @@ gameApp.controller('GameController', ['GameService', function(GameService) {
     self.addGame = twitch.addGame;
     self.gameToAdd = twitch.gameToAdd;
 
+    //link for DELETE REQ
     self.removeGame = function(game) {
         console.log(game.id);
         twitch.removeGame(game.id);
     };
 
+    //LINK FOR PUT RATING REQ
+    self.changeGameScore = twitch.changeGameScore;
 }]);

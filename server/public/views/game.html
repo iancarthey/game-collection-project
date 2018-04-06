@@ -10,6 +10,7 @@
                 <!-- repeat over ships -->
                 <option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</option>
             </select>
+            <input type="number" placeholder="Rating" ng-model="vm.gameToAdd.rating">
         <input type="submit">
     </form>
     <hr>
@@ -17,7 +18,7 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Action</th>
+                <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Rating</th> <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,7 +26,12 @@
                 <td>{{game.name}}</td>
                 <td>{{game.release}}</td>
                 <td>{{game.type_name}}</td>
-                <td><button ng-click="vm.removeGame(game)">Remove</button></td>
+                <td>{{game.rating}}</td>
+                <td>
+                    <button ng-click="vm.changeGameScore(game, 1)">Up Vote</button>
+                    <button ng-click="vm.changeGameScore(game, -1)">Down Vote</button>
+                    <button ng-click="vm.removeGame(game)">Remove</button>
+                </td>
             </tr>
         </tbody>
     </table>
