@@ -1,5 +1,5 @@
 <section>
-    <h3>Add Game</h3>
+    <h3>Add A Game</h3>
     <!-- GAME INPUTS GO HERE -->
     <div class="gameInputClass">
         <md-input-container>
@@ -10,6 +10,10 @@
                 <label>Release Year</label>
                 <input ng-model="vm.gameToAdd.release">
         </md-input-container>
+        <md-input-container>
+                <label>Picture Url</label>
+                <input ng-model="vm.gameToAdd.pic">
+        </md-input-container>
         <br>
         <md-input-container>
             <label>Game Type</label>
@@ -18,33 +22,17 @@
                 <md-option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</md-option>
             </md-select>
         </md-input-container>
-        <!-- <md-input-container> -->
-            <!-- <label>Rating</label>
-            <md-Select ng-model="vm.gameToAdd.rating">
-                <md-option value="0">0</md-option>
-                <md-option value="1">1</md-option>
-                <md-option value="2">2</md-option>
-                <md-option value="3">3</md-option>
-                <md-option value="4">4</md-option>
-                <md-option value="5">5</md-option>
-                <md-option value="6">6</md-option>
-                <md-option value="7">7</md-option>
-                <md-option value="8">8</md-option>
-                <md-option value="9">9</md-option>
-                <md-option value="10">10</md-option>
-            </md-Select>
-        </md-input-container> -->
         <h3>Rating: {{vm.gameToAdd.rating}}/10 </h3>
         <div class="sliderClass">
                 <div flex="10" layout layout-align="left left"></div>
             <md-slider flex class="md-primary md-discrete" ng-model="vm.gameToAdd.rating" step="1" min="0" max="10" aria-label="rating">
             </md-slider>
         </div>
-        <md-button ng-click="vm.addGame(vm.gameToAdd)" type="submit">Submit</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.addGame(vm.gameToAdd)" type="submit">Submit</md-button>
     </div>
     <hr>
-    <h3>Games</h3>
-    <table>
+    <h2>Games</h2>
+    <!-- <table>
         <thead>
             <tr>
                 <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Rating</th> <th>Actions</th>
@@ -56,11 +44,23 @@
                 <td>{{game.release}}</td>
                 <td>{{game.type_name}}</td>
                 <td>{{game.rating}}</td>
-                <td><button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</button>
-                    <button ng-click="vm.changeGameScore(game, -1)">Down Vote</button>
-                    <button ng-click="vm.removeGame(game)">Remove</button>
+                <td><md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
+                    <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button>
+                    <md-button ng-click="vm.removeGame(game)" class="md-raised md-warn">Remove</md-button>
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
+    <div class="gameClass" ng-repeat="game in vm.gameLib.list">
+        <h3>{{game.name}}</h3>
+        <img ng-src="{{game.pic}}">
+        <p>Release Year: {{game.release}}</p>
+        <p>Game Type: {{game.type_name}}</p>
+        <p>Rating: {{game.rating}}</p>
+        <md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
+        <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button> 
+        <br>
+        <md-button ng-click="vm.favoriteGame(game, game.fav)" class="md-raised md-primary">Favorite</md-button>
+        <md-button ng-click="vm.removeGame(game)" class="md-raised md-warn">Remove</md-button>
+    </div>
 </section>

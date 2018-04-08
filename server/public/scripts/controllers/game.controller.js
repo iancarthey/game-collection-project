@@ -24,4 +24,7 @@ gameApp.controller('GameController', ['GameService', function(GameService) {
 
     //LINK FOR PUT RATING REQ
     self.changeGameScore = twitch.changeGameScore;
+
+    //LINK FOR FAVORITE
+    self.favoriteGame = twitch.favoriteGame;
 }]);

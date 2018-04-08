@@ -9,6 +9,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     self.getGame = function(){
         $http.get('/library/game').then(function(response){
+            console.log(response.data);
             self.gameLib.list = response.data;
         }).catch(function(error){
             console.log('ERROR IN GETTING GAMES');
@@ -17,7 +18,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //GET REQUEST FOR TYPE
     self.getType = function(){
-        $http.get('/library/gametype').then(function(response){
+        $http.get('/type/gametype').then(function(response){
             self.typeArray.list = response.data;
         }).catch(function(error){
             console.log('ERROR IN GETTING TYPES');
@@ -36,7 +37,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //POST REQUEST FOR ADDING TYPE
     self.addType = function(newGameType){
-        $http.post('/library/gametype', newGameType).then(function(response){
+        $http.post('/type/gametype', newGameType).then(function(response){
             self.getType();
         }).catch(function(error){
             console.log('ERROR IN CLIENT ADD GAME TYPE: ', error);
@@ -48,7 +49,7 @@ gameApp.service('GameService', ['$http', function($http){
 
     //DELETE REQUEST FOR GAMETYPE
     self.removeGameType = function(gtId){
-        $http.delete(`/library/gametype/${gtId}`).then(function(response){
+        $http.delete(`/type/gametype/${gtId}`).then(function(response){
             console.log('succesfully deleted gametype');
             self.getType();
             self.getGame();
@@ -73,10 +74,20 @@ gameApp.service('GameService', ['$http', function($http){
     self.changeGameScore = function(game, ratingChange){
         let rating = {ratingChange: ratingChange};
         $http.put(`/library/game/${game.id}`, rating).then(function(response){
-            self.getGame()
+            self.getGame();
         }).catch(function(error){
-            console.log('ERROR IN CLIENT PUT REQ: ', error);
+            console.log('ERROR IN CLIENT SCORING PUT REQ: ', error);
         });
     };
 
+    // PUT REQUEST FOR UPDATING FAVORITE
+    self.favoriteGame = function(game, gameFav){
+        gameFav = !gameFav;
+        let newFav = { favChanger: gameFav };
+        $http.put(`/fav/game/${game.id}`, newFav).then(function(response){
+            self.getGame();
+        }).catch(function(error){
+            console.log('ERROR IN CLIENT FAV PUT REQ: ', error);
+        })
+    }
 }]);

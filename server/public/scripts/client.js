@@ -11,7 +11,11 @@ gameApp.config(function($routeProvider){
     }).when('/gametype', {
         templateUrl: '/views/gametype.html',
         controller: 'TypeController as vm'
-    }).otherwise(
+    }).when('/fav', {
+        templateUrl: '/views/fav.html',
+        controller: 'GameController as vm'
+    })
+    .otherwise(
         {redirectTo: '/game'}
     )
 });

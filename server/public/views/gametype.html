@@ -6,7 +6,7 @@
             <label>New Game Type</label>
             <input ng-model="vm.newGameType.type_name">
         </md-input-container> 
-        <input type="submit">
+        <md-button class="md-raised md-primary" type="submit">Submit</md-button>
     </form>
     <hr>
     <h3>Game Types</h3>
@@ -20,7 +20,7 @@
             <tr ng-repeat="gt in vm.typeArray.list">
                 <td>{{gt.type_name}} games</td>
                 <td>{{gt.count}}</td>
-                <td><button ng-click="vm.removeGameType(gt)">DELETE</button></td>
+                <td><md-button class="md-raised md-warn" ng-click="vm.removeGameType(gt)">Delete</md-button></td>
             </tr>
         </tbody>
     </table>
