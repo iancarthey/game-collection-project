@@ -7,11 +7,5 @@
             <p>Release Year: {{game.release}}</p>
             <p>Game Type: {{game.type_name}}</p>
             <p>Rating: {{game.rating}}</p>
-            <md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
-            <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button> 
-            <br>
-            <md-button ng-click="vm.favoriteGame(game, game.fav)" class="md-raised md-primary">Favorite</md-button>
-            <md-button ng-click="vm.removeGame(game)" class="md-raised md-warn">Remove</md-button>
-        </div>
     </div>
 </section>
