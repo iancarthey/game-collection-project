@@ -1,4 +1,4 @@
-gameApp.service('GameService', ['$http', function($http){
+gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
     let self = this;
 
     //create an array to push games into
@@ -11,7 +11,6 @@ gameApp.service('GameService', ['$http', function($http){
 
     self.getGame = function(){
         $http.get('/library/game').then(function(response){
-            console.log(response.data);
             self.gameLib.list = response.data;
         }).catch(function(error){
             console.log('ERROR IN GETTING GAMES');
@@ -52,7 +51,6 @@ gameApp.service('GameService', ['$http', function($http){
     //DELETE REQUEST FOR GAMETYPE
     self.removeGameType = function(gtId){
         $http.delete(`/type/gametype/${gtId}`).then(function(response){
-            console.log('succesfully deleted gametype');
             self.getType();
             self.getGame();
         }).catch(function(error){
@@ -63,13 +61,22 @@ gameApp.service('GameService', ['$http', function($http){
     // DELETE REQUEST FOR GAMES
     self.removeGame = function(gameId){
         console.log(gameId);
-        $http.delete(`/library/game/${gameId}`).then(function(response){
-            console.log('successfully deleted gametype');
+        $http.delete(`/library/game/${gameId}`).then( (response) => {
             self.getGame();
             self.getType();
-        }).catch(function(error){
+            showToast();
+        }).catch((error) => {
             console.log('ERROR DELETING CLIENT GAME: ', error);
         });
+    };
+
+    
+    function showToast(){
+        $mdToast.show(
+            $mdToast.simple()
+              .textContent('Game Removed!')
+              .hideDelay(5000)
+          );
     };
 
     // PUT REQUEST FOR UPDATING RATING
@@ -93,12 +100,5 @@ gameApp.service('GameService', ['$http', function($http){
         })
     }
 
-    // // GET REQUEST FOR FAVORITES
-    // self.getFavorites = function(){
-    //     $http.get('/fav').then(function(response){
-    //         console.log(response);
-
-    //     })
-    // }
 
 }]);
