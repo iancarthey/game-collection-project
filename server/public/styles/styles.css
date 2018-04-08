@@ -21,4 +21,7 @@ img {
 
 h1 {
     text-align: center;
+    background-image: url("https://c1.staticflickr.com/9/8372/8553676198_4d1f4ef2a3_b_d.jpg");
+    width: 100%;
+    height: 60px;
 }

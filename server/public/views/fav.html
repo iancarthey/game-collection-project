@@ -1,6 +1,7 @@
 <section>
     <h3>Favorites</h3>
-    <div class="gameClass" ng-repeat="game in vm.gameLib.list">
+    <div ng-repeat="game in vm.gameLib.list">
+        <div ng-show="{{game.fav}}" class="gameClass">
             <h3>{{game.name}}</h3>
             <img ng-src="{{game.pic}}">
             <p>Release Year: {{game.release}}</p>
@@ -11,5 +12,6 @@
             <br>
             <md-button ng-click="vm.favoriteGame(game, game.fav)" class="md-raised md-primary">Favorite</md-button>
             <md-button ng-click="vm.removeGame(game)" class="md-raised md-warn">Remove</md-button>
+        </div>
     </div>
 </section>

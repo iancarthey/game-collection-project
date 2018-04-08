@@ -32,26 +32,12 @@
     </div>
     <hr>
     <h2>Games</h2>
-    <!-- <table>
-        <thead>
-            <tr>
-                <th>Name</th> <th>Release Year</th> <th>Game Type</th> <th>Rating</th> <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="game in vm.gameLib.list">
-                <td>{{game.name}}</td>
-                <td>{{game.release}}</td>
-                <td>{{game.type_name}}</td>
-                <td>{{game.rating}}</td>
-                <td><md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
-                    <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button>
-                    <md-button ng-click="vm.removeGame(game)" class="md-raised md-warn">Remove</md-button>
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
-    <div class="gameClass" ng-repeat="game in vm.gameLib.list">
+    <md-input-container>
+        <label>Search</label>
+        <input type="text" ng-model="filter">
+    </md-input-container>
+    <br>
+    <div class="gameClass" ng-repeat="game in vm.gameLib.list | filter: filter">
         <h3>{{game.name}}</h3>
         <img ng-src="{{game.pic}}">
         <p>Release Year: {{game.release}}</p>

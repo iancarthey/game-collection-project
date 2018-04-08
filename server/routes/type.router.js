@@ -7,7 +7,7 @@ router.get('/gametype', (req, res) => {
     // USE RIGHT JOIN FOR DISPLAYING GAME TYPES THAT HAVE NO GAMES IN THEM
     let queryText = `SELECT "gametypes"."id", "gametypes"."type_name", COUNT("games"."gametype_id") 
                     FROM "games" RIGHT JOIN "gametypes" ON "games"."gametype_id" = 
-                    "gametypes"."id" GROUP BY "gametypes"."type_name", "gametypes"."id"`;
+                    "gametypes"."id" GROUP BY "gametypes"."type_name", "gametypes"."id" ORDER BY id ASC`;
     pool.query(queryText)
     .then( (result) => {
         res.send(result.rows);

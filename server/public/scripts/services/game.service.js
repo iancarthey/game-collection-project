@@ -6,6 +6,8 @@ gameApp.service('GameService', ['$http', function($http){
 
     //create an array to push types into
     self.typeArray = { list: [] };
+    
+
 
     self.getGame = function(){
         $http.get('/library/game').then(function(response){
@@ -90,4 +92,13 @@ gameApp.service('GameService', ['$http', function($http){
             console.log('ERROR IN CLIENT FAV PUT REQ: ', error);
         })
     }
+
+    // // GET REQUEST FOR FAVORITES
+    // self.getFavorites = function(){
+    //     $http.get('/fav').then(function(response){
+    //         console.log(response);
+
+    //     })
+    // }
+
 }]);

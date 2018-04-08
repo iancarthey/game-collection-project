@@ -7,7 +7,7 @@ router.get('/game', (req, res) => {
     // TEXT FOR JOING GAMES AND GAMETYPES
     let queryText = `SELECT "games"."id", "games"."name", "games"."release", "gametypes"."type_name", "games"."rating", "games"."pic", 
                     "games"."fav" FROM "games" JOIN "gametypes" ON "games"."gametype_id" = 
-                    "gametypes"."id"`;
+                    "gametypes"."id" ORDER BY id ASC`;
     pool.query(queryText)
     .then( (result) => {
         res.send(result.rows);
