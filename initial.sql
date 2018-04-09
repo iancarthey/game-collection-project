@@ -8,10 +8,10 @@ CREATE TABLE games (
     name varchar(255),
 	release date,
     type varchar(255),
-    gametype_id INT REFERENCES "gametypes"
+    gametype_id INT REFERENCES "gametypes",
 	rating INT,
 	pic varchar(500),
-	fav boolean DEFAULT "FALSE"
+	fav boolean DEFAULT 'FALSE'
 );
 
 INSERT INTO "gametypes" ("name") VALUES ('video game'), ('board game'), ('card game');

@@ -31,22 +31,26 @@
         <md-button class="md-raised md-primary" ng-click="vm.addGame(vm.gameToAdd)" type="submit">Submit</md-button>
     </div>
     <hr>
-    <h2>Games</h2>
-    <md-input-container>
-        <label>Search</label>
-        <input type="text" ng-model="filter">
-    </md-input-container>
-    <br>
-    <div class="gameClass" ng-repeat="game in vm.gameLib.list | filter: filter">
-        <h3>{{game.name}}</h3>
-        <img ng-src="{{game.pic}}">
-        <p>Release Year: {{game.release}}</p>
-        <p>Game Type: {{game.type_name}}</p>
-        <p>Rating: {{game.rating}}</p>
-        <md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
-        <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button> 
+    <div id="bodyDiv">
+        <div id="headDiv">
+            <h2>Games</h2>
+            <md-input-container>
+                <label>Search</label>
+                <input type="text" ng-model="filter">
+             </md-input-container>
+        </div>
         <br>
-        <md-button ng-click="vm.favoriteGame(game, game.fav)" class="md-raised md-primary">Favorite</md-button>
-        <md-button ng-click="vm.removeGame($event, game)" class="md-raised md-warn">Remove</md-button>
+        <div class="gameClass" ng-repeat="game in vm.gameLib.list | filter: filter">
+            <h3>{{game.name}}</h3>
+            <img ng-src="{{game.pic}}">
+            <p>Release Year: {{game.release}}</p>
+            <p>Game Type: {{game.type_name}}</p>
+            <p>Rating: {{game.rating}}</p>
+            <md-button ng-click="vm.changeGameScore(game, 1)" ng-disabled="game.rating == 10">Up Vote</md-button>
+            <md-button ng-click="vm.changeGameScore(game, -1)">Down Vote</md-button> 
+            <br>
+            <md-button ng-click="vm.favoriteGame(game, game.fav)" class="md-raised md-primary">Favorite</md-button>
+            <md-button ng-click="vm.removeGame($event, game)" class="md-raised md-warn">Remove</md-button>
+        </div>
     </div>
 </section>
