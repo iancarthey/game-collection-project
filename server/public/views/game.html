@@ -11,7 +11,7 @@
                 <input ng-model="vm.gameToAdd.release">
         </md-input-container>
         <md-input-container>
-                <label>Picture Url</label>
+                <label>Cover Url</label>
                 <input ng-model="vm.gameToAdd.pic">
         </md-input-container>
         <br>
@@ -22,7 +22,7 @@
                 <md-option ng-repeat="type in vm.typeArray.list" value="{{type.id}}">{{type.type_name}}</md-option>
             </md-select>
         </md-input-container>
-        <h3>Rating: {{vm.gameToAdd.rating}}/10 </h3>
+        <h4>Rating: {{vm.gameToAdd.rating}}/10 </h4>
         <div class="sliderClass">
                 <div flex="10" layout layout-align="left left"></div>
             <md-slider flex class="md-primary md-discrete" ng-model="vm.gameToAdd.rating" step="1" min="0" max="10" aria-label="rating">
