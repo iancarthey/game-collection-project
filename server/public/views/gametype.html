@@ -10,21 +10,7 @@
     </form>
     <hr>
     <h3>Game Types</h3>
-    <!-- <table>
-        <thead>
-            <tr>
-                <td>Type</td> <td>Number of Games</td> <td>Action</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="gt in vm.typeArray.list">
-                <td>{{gt.type_name}} games</td>
-                <td>{{gt.count}}</td>
-                <td><md-button class="md-raised md-warn" ng-click="vm.removeGameType(gt)">Delete</md-button></td>
-            </tr>
-        </tbody>
-    </table> -->
-
+    <br>
     <div class="gtDiv" ng-repeat="gt in vm.typeArray.list" layout="column">
         <p>{{gt.type_name}} games</p>
         <p>Count: {{gt.count}}</p>
