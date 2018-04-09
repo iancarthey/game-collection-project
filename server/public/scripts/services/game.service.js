@@ -10,37 +10,37 @@ gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
 
 
     self.getGame = function(){
-        $http.get('/library/game').then(function(response){
+        $http.get('/library/game').then( (response) => {
             self.gameLib.list = response.data;
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN GETTING GAMES');
         })
     };
 
     //GET REQUEST FOR TYPE
     self.getType = function(){
-        $http.get('/type/gametype').then(function(response){
+        $http.get('/type/gametype').then( (response) => {
             self.typeArray.list = response.data;
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN GETTING TYPES');
         })
     };
 
     //POST REQUEST FOR ADDING GAME
     self.addGame = function(gameToAdd){
-        $http.post('/library/game', gameToAdd).then(function(response){
+        $http.post('/library/game', gameToAdd).then( (response) => {
             self.getGame();
             self.getType();
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN CLIENT ADD GAME: ', error);
         })
     };
 
     //POST REQUEST FOR ADDING TYPE
     self.addType = function(newGameType){
-        $http.post('/type/gametype', newGameType).then(function(response){
+        $http.post('/type/gametype', newGameType).then( (response) => {
             self.getType();
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN CLIENT ADD GAME TYPE: ', error);
         })
 };
@@ -50,17 +50,16 @@ gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
 
     //DELETE REQUEST FOR GAMETYPE
     self.removeGameType = function(gtId){
-        $http.delete(`/type/gametype/${gtId}`).then(function(response){
+        $http.delete(`/type/gametype/${gtId}`).then( (response) =>{
             self.getType();
             self.getGame();
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR DELETING CLIENT GT: ', error);
         });
     };
 
     // DELETE REQUEST FOR GAMES
     self.removeGame = function(gameId){
-        console.log(gameId);
         $http.delete(`/library/game/${gameId}`).then( (response) => {
             self.getGame();
             self.getType();
@@ -70,7 +69,7 @@ gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
         });
     };
 
-    
+
     function showToast(){
         $mdToast.show(
             $mdToast.simple()
@@ -82,9 +81,9 @@ gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
     // PUT REQUEST FOR UPDATING RATING
     self.changeGameScore = function(game, ratingChange){
         let rating = {ratingChange: ratingChange};
-        $http.put(`/library/game/${game.id}`, rating).then(function(response){
+        $http.put(`/library/game/${game.id}`, rating).then( (response) => {
             self.getGame();
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN CLIENT SCORING PUT REQ: ', error);
         });
     };
@@ -93,9 +92,9 @@ gameApp.service('GameService', ['$http', '$mdToast', function($http, $mdToast){
     self.favoriteGame = function(game, gameFav){
         gameFav = !gameFav;
         let newFav = { favChanger: gameFav };
-        $http.put(`/fav/game/${game.id}`, newFav).then(function(response){
+        $http.put(`/fav/game/${game.id}`, newFav).then( (response) => {
             self.getGame();
-        }).catch(function(error){
+        }).catch( (error) => {
             console.log('ERROR IN CLIENT FAV PUT REQ: ', error);
         })
     }
